@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Visual Instrument — Intonation Switcher (Audio + ADSR + Waveform)</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.8/lib/p5.min.js"></script>
+</head>
+<body>
+  <!-- One-time user gesture gate -->
+  <div id="gate"><button id="beginBtn">Tap to Begin</button></div>
+
+  <div id="controls">
+    <div class="row">
+      <label for="intonation">Intonation</label>
+      <select id="intonation">
+        <option value="equal" selected>Equal Temperament</option>
+        <option value="just">Just Intonation (5‑limit)</option>
+        <option value="pyth">Pythagorean</option>
+        <option value="nearest">Nearest Harmonic to ET</option>
+      </select>
+      <label for="wave">Wave</label>
+      <select id="wave">
+        <option value="sine" selected>Sine</option>
+        <option value="triangle">Triangle</option>
+        <option value="sawtooth">Saw</option>
+        <option value="square">Square</option>
+      </select>
+      <label for="vol">Vol</label>
+      <input id="vol" type="range" min="0" max="1" step="0.01" value="0.25" />
+    </div>
+    <div class="row">
+      <div class="slider"><label for="att">A</label><input id="att" type="range" min="0.001" max="2.000" step="0.001" value="0.010" /><span id="attv">10ms</span></div>
+      <div class="slider"><label for="dec">D</label><input id="dec" type="range" min="0.001" max="2.000" step="0.001" value="0.080" /><span id="decv">80ms</span></div>
+      <div class="slider"><label for="sus">S</label><input id="sus" type="range" min="0.00" max="1.00" step="0.01" value="0.85" /><span id="susv">0.85</span></div>
+      <div class="slider"><label for="rel">R</label><input id="rel" type="range" min="0.005" max="4.000" step="0.005" value="0.250" /><span id="relv">250ms</span></div>
+    </div>
+    <div id="meta"></div>
+  </div>
+
+  <script src="sketch.js"></script>
+</body>
+</html>
