@@ -8,7 +8,7 @@ and waveforms while visualizing the sound.
 
 - **Intonation presets:** Equal temperament, Just Intonation (5‑limit), Pythagorean,
   and nearest harmonic tuning.
-- **Waveforms:** Sine, triangle, sawtooth, and square.
+- **Waveforms:** Sine, triangle (default), sawtooth, and square.
 - **ADSR envelope:** Adjustable attack, decay, sustain, and release times.
 - **MIDI support:** Connect a MIDI controller for input.
 - **Visual feedback:** Animated line tiles respond to the audio envelope.
@@ -18,6 +18,13 @@ and waveforms while visualizing the sound.
 1. Open `index.html` in a modern web browser.
 2. Click **Tap to Begin** to enable audio.
 3. Play notes using your computer keyboard or a connected MIDI device.
+
+   Keyboard mapping covers C2–C5:
+
+   - `1`–`=` → C2–B2
+   - `Q`–`]` → C3–B3
+   - `A`–`\` → C4–B4
+   - `Z` → C5
 
 The controls panel lets you change intonation, waveform, volume, and ADSR
 parameters. Current tuning metadata appears below the sliders when relevant.

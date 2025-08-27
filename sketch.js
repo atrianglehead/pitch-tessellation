@@ -310,6 +310,40 @@ function noteOff(m) {
   }
 }
 
+// ===== Computer Keyboard =====
+const KEYBOARD_ROWS = [
+  ['Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal'], // C2-B2
+  ['KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight'], // C3-B3
+  ['KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Backslash'], // C4-B4
+  ['KeyZ'], // C5
+];
+const KEY_TO_MIDI = {};
+let midiBase = 36; // MIDI note for C2
+for (const row of KEYBOARD_ROWS) {
+  for (const code of row) {
+    KEY_TO_MIDI[code] = midiBase++;
+  }
+}
+
+window.addEventListener('keydown', (e) => {
+  if (e.repeat) return;
+  if (['INPUT', 'SELECT', 'TEXTAREA'].includes(e.target.tagName)) return;
+  const m = KEY_TO_MIDI[e.code];
+  if (m !== undefined) {
+    e.preventDefault();
+    noteOn(m);
+  }
+});
+
+window.addEventListener('keyup', (e) => {
+  if (['INPUT', 'SELECT', 'TEXTAREA'].includes(e.target.tagName)) return;
+  const m = KEY_TO_MIDI[e.code];
+  if (m !== undefined) {
+    e.preventDefault();
+    noteOff(m);
+  }
+});
+
 function retuneActiveVoices() {
   for (const m of activeNotes) {
     const v = voices.get(m);
